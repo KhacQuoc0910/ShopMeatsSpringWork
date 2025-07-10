@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+  <header>
+    <h1>CHỢ THỊT TƯƠI SẠCH</h1>
+    <p>Cam kết thịt tươi ngon, nguồn gốc rõ ràng</p>
+  </header>
+</div>
+
+<div th:fragment="nav">
+  <nav>
+    <a th:href="@{/HomePages/}">Trang Chủ</a>
+    <a th:href="@{/HomePages/list}">Sản Phẩm</a>
+    <a href="#">Đơn Hàng</a>
+    <a href="#">Giỏ Hàng</a>
+    <a href="#">Liên hệ</a>
+    <a th:href="@{/login}">Đăng nhập</a>
+
+  </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bán Thịt Tươi Sạch</title>
+    <link rel="stylesheet" th:href="@{/CSS/css.css}">
+</head>
+<body>
+<header>
+    <div th:replace="home/header :: header"></div>
+    <div th:replace="home/header :: nav"></div>
+</header>
+<div class="banner"></div>
+
+<div class="container">
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1562967914-70a28092c8f1" alt="Thịt Heo">
+        <h3>Thịt Heo Tươi</h3>
+        <p>120.000đ/kg</p>
+    </div>
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1607344093959-73c5ac7d90e4" alt="Thịt Bò">
+        <h3>Thịt Bò Úc</h3>
+        <p>250.000đ/kg</p>
+    </div>
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1585238341986-eee2d5b51f09" alt="Thịt Gà">
+        <h3>Ức Gà Tươi</h3>
+        <p>95.000đ/kg</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Chợ Thịt Tươi Sạch - Giao Hàng Toàn Quốc</p>
+</footer>
+
+</body>
+</html>

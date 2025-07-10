@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bán Thịt Tươi Sạch</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+
+    header {
+        background-color: #d32f2f;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: #d32f2f;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        display: block;
+    }
+
+    nav a:hover {
+        background-color: #b71c1c;
+    }
+
+    .banner {
+        width: 100%;
+        height: 300px;
+        background: url('https://images.unsplash.com/photo-1604908177069-23d10c2eb0ca') center/cover no-repeat;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+        justify-items: center;
+    }
+
+    .product-card {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+        width: 250px;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .product-card h3 {
+        margin: 10px 0;
+    }
+
+    .product-card p {
+        color: #d32f2f;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    footer {
+        background: #d32f2f;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+</style>
+</head>
+<body>
+<header>
+    <div th:replace="home/header :: header"></div>
+    <div th:replace="home/header :: nav"></div>
+</header>
+
+<div class="container">
+    <div class="product-card" th:each="p : ${data}">
+        <img th:src="@{${p.imageURL}}" alt="Ảnh sản phẩm">
+        <h3 th:text="${p.productName}"></h3>
+        <p th:text="${p.price} + ' đ'"></p>
+        <form th:action="@{/HomePages/detail}" method="post">
+            <input type="hidden" name="id" th:value="${p.productID}">
+            <button type="submit">View Detail</button>
+        </form>
+        <form th:action="@{/HomePage/addtocart}" method="post">
+            <input type="hidden" name="id" th:value="${p.productID}">
+            <button type="submit">Add to cart</button>
+        </form>
+        <form th:action="@{/HomePage/buynow}" method="post">
+            <input type="hidden" name="id" th:value="${p.productID}">
+            <button type="submit">Buy Now</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Chợ Thịt Tươi Sạch - Giao Hàng Toàn Quốc</p>
+</footer>
+
+</body>
+</html>

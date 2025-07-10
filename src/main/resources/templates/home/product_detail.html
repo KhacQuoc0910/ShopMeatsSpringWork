@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bán Thịt Tươi Sạch</title>
+    <link rel="stylesheet" th:href="@{/CSS/css.css}">
+    <link rel="stylesheet" th:href="@{/CSS/products.css}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-card {
+            max-width: 1200px; /* tăng giới hạn chiều ngang */
+            width: 90%;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between; /* đẩy ảnh và info ra xa */
+        }
+
+
+        .product-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .product-card img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 28px;
+            color: #333;
+            margin: 0 0 15px 0;
+        }
+
+        .product-card p {
+            font-size: 18px;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .product-card img {
+                max-width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div th:replace="home/header :: header"></div>
+    <div th:replace="home/header :: nav"></div>
+</header>
+<div class="product-card">
+    <img th:src="@{${productDetail.imageURL}}" alt="Hình ảnh sản phẩm"/>
+    <div class="product-info">
+        <h3 th:text="${productDetail.product.productName}"></h3>
+        <p th:text="${productDetail.product.category}"></p>
+        <p th:text="${productDetail.product.price} + ' đ'"></p>
+        <p th:text="'Kho: ' + ${productDetail.product.stockWeight} + ' kg'"></p>
+        <p th:text="${productDetail.description}"></p>
+    </div>
+</div>
+
+
+
+</body>
+</html>
