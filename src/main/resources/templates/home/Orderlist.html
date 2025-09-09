@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách đơn hàng</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Danh sách đơn hàng</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Order Date</th>
+        <th>Total Amount</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${data}">
+        <td th:text="${order.orderID}"></td>
+        <td th:text="${order.user.username}"></td>
+        <td th:text="${order.user.fullName}"></td>
+        <td th:text="${order.orderDate != null ? #dates.format(order.orderDate, 'dd/MM/yyyy HH:mm') : 'N/A'}"></td> <!-- ✅ FIX -->
+        <td th:text="${order.totalAmount}"></td>
+        <td th:text="${order.status == 1 ? 'Completed' : 'Pending'}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

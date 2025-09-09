@@ -24,8 +24,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/AdminDashBoat").permitAll()
+                        .requestMatchers("/HomePages/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/cart/**").hasRole("CUSTOMER")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
