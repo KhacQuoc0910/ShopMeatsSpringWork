@@ -1,23 +1,31 @@
 package org.example.shopmeat2.modals;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Orders {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orderid")
     private Long orderID;
 
     @ManyToOne
-    @JoinColumn(name = "UserID", nullable = false)
+    @JoinColumn(name = "userid", nullable = false)
     private Users user;
 
-    private LocalDateTime orderDate = LocalDateTime.now();
+    @Column(name = "orderdate")
+    private LocalDateTime orderDate;
 
-    private Double totalAmount;
+    @Column(name = "totalamount")
+    private BigDecimal totalAmount;
+
+    @Column(name = "status")
+    private short status;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetails> orderDetails;
@@ -49,12 +57,20 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public Double getTotalAmount() {
+    public BigDecimal getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Double totalAmount) {
+    public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 
     public List<OrderDetails> getOrderDetails() {
