@@ -3,6 +3,7 @@ package org.example.shopmeat2.security;
 import org.example.shopmeat2.dal.UserRepository;
 import org.example.shopmeat2.modals.Users;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,14 +25,15 @@ public class CustomUserDetailsService implements UserDetailsService {
                     return new UsernameNotFoundException("Không tìm thấy người dùng");
                 });
 
-        System.out.println(">> Tìm thấy user: " + user.getUsername() + " - " + user.getPasswordHash());
+        System.out.println(">> Tìm thấy user: " + user.getUsername() + " - " + user.getPasswordHash() + " - Role: " + user.getRole());
+
+
+        String role = user.getRole().toUpperCase();
 
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPasswordHash())
-                .roles(user.getRole().toUpperCase())
+                .roles(role)
                 .build();
     }
-
-
 }
