@@ -1,44 +1,63 @@
 package org.example.shopmeat2.modals;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userid")
     private int userID;
 
+    @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "fullname")
     private String fullName;
 
+    @Column(name = "passwordhash", nullable = false)
     private String passwordHash;
 
+    @Column(name = "role")
     private String role;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "address")
     private String address;
-    @ManyToOne
-    @JoinColumn(name = "emailID")
-    private Emails emails;
+
+    @Column(name = "createdat")
+    private LocalDateTime createdAt;
+
+    @Column(name = "status")
+    private short status;
 
     public Users() {
     }
 
-    public Users(int userID, String username, String fullName, String passwordHash, String role, String phone, String address, Emails emails) {
+    public Users(int userID, String username, String fullName, String passwordHash,
+                 String role, String phone, String email, String address,
+                 LocalDateTime createdAt, short status) {
         this.userID = userID;
         this.username = username;
         this.fullName = fullName;
         this.passwordHash = passwordHash;
         this.role = role;
         this.phone = phone;
+        this.email = email;
         this.address = address;
-        this.emails = emails;
+        this.createdAt = createdAt;
+        this.status = status;
     }
-// Getters and Setters
+
+    // Getters và Setters
 
     public int getUserID() {
         return userID;
@@ -88,6 +107,14 @@ public class Users {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -96,11 +123,19 @@ public class Users {
         this.address = address;
     }
 
-    public Emails getEmails() {
-        return emails;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setEmails(Emails emails) {
-        this.emails = emails;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 }

@@ -4,23 +4,30 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Cart")
+@Table(name = "cart")
 public class Cart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cartid")
     private Long cartID;
 
     @ManyToOne
-    @JoinColumn(name = "UserID", nullable = false)
+    @JoinColumn(name = "userid", nullable = false)
     private Users user;
 
     @ManyToOne
-    @JoinColumn(name = "ProductID", nullable = false)
+    @JoinColumn(name = "productid", nullable = false)
     private Product product;
 
+    @Column(name = "quantity")
     private Integer quantity;
 
-    private LocalDateTime addedAt = LocalDateTime.now();
+    @Column(name = "adddate")
+    private LocalDateTime addedAt;
+
+    @Column(name = "status")
+    private short status;
 
     public Cart() {
     }
@@ -63,5 +70,13 @@ public class Cart {
 
     public void setAddedAt(LocalDateTime addedAt) {
         this.addedAt = addedAt;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 }

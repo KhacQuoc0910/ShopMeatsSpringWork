@@ -3,20 +3,23 @@ package org.example.shopmeat2.modals;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="ProductDetails")
+@Table(name = "productdetails")
 public class ProductDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="DetailID")
+    @Column(name = "detailid")
     private int detailID;
-    @ManyToOne
-    @JoinColumn(name = "ProductID")
-    private Product product;
-    @Column(name="Description")
-    private String description;
-    @Column(name="ImageURL")
-    private String imageURL;
 
+    @ManyToOne
+    @JoinColumn(name = "productid", nullable = false)
+    private Product product;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "imageurl")
+    private String imageURL;
 
     public ProductDetails() {
     }
