@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -30,31 +31,44 @@ public class CartController {
     @Autowired
     private ProductService productService;
 
-    // 🟢 Xem giỏ hàng theo user đang đăng nhập
     @GetMapping("/list")
     public String listCart(Model model,
                            @AuthenticationPrincipal org.springframework.security.core.userdetails.UserDetails principal) {
         if (principal == null) {
-            System.out.println(">> Chưa đăng nhập, redirect về /login");
             return "redirect:/login";
         }
-        System.out.println(">> Đang load giỏ hàng cho user: " + principal.getUsername());
 
         Users user = userService.getUserByUsername(principal.getUsername());
         if (user == null) {
-            System.out.println(">> Không tìm thấy user trong DB");
             return "redirect:/login";
         }
 
         List<Cart> carts = cartService.getAllCartsByUserID(user.getUserID());
-        System.out.println(">> Tổng số item: " + carts.size());
+
+        // ✅ Tính totalPrice cho từng cart item
+        carts.forEach(cart -> {
+            if (cart.getProduct() != null && cart.getProduct().getPrice() != null) {
+                cart.setTotalPrice(
+                        cart.getProduct().getPrice()
+                                .multiply(java.math.BigDecimal.valueOf(cart.getQuantity()))
+                );
+            }
+        });
+
+        // ✅ Tính tổng tất cả
+        java.math.BigDecimal grandTotal = carts.stream()
+                .map(Cart::getTotalPrice)
+                .filter(java.util.Objects::nonNull)
+                .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
 
         model.addAttribute("carts", carts);
+        model.addAttribute("grandTotal", grandTotal);
         model.addAttribute("currentUser", user);
+
         return "home/cartList";
     }
 
-@GetMapping("/add_form")
+    @GetMapping("/add_form")
 public String addForm(@RequestParam int productId,Model model) {
         var product = productService.getProductById(productId);
         if (product == null) {
