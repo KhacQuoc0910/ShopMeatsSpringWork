@@ -23,9 +23,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/AdminDashBoat").permitAll()
+        http.csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/api/products/**") // tắt CSRF cho API
+                )
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/cart/**").hasRole("CUSTOMER")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form

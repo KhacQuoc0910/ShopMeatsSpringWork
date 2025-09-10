@@ -30,4 +30,7 @@ public class ProductService {
         return detail.findById(detailID).orElse(null);
     }
 
+    public Product getProductById(int productId) {
+        return productRepository.findById(productId).orElse(null);
+    }
 }

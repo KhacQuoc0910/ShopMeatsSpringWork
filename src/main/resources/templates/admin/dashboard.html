@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <!--  <meta name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <!--  <link rel="icon" th:href="@{/Frontend/assets/images/favicon/3.png}" type="image/x-icon">-->
+    <link rel="icon" th:href="@{/assets/images/favicon.png}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/assets/images/favicon.png}" type="image/x-icon">
+    <title>ShopMeat</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" th:href="@{/assets/css/vendors/bootstrap.css}">
+
+    <!-- wow css -->
+    <link rel="stylesheet" th:href="@{/assets/css/animate.min.css}">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bulk-style.css}">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+<!-- Breadcrumb Section Start -->
+<section class="breadcrumb-section pt-0">
+    <div class="container-fluid-lg">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-contain">
+                    <h2>Bảng điều khiển</h2>
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="HomePages/list">
+                                    <i class="fa-solid fa-house"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">Bảng điều khiển</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- User Dashboard Section Start -->
+<section class="user-dashboard-section section-b-space">
+    <div class="container-fluid-lg">
+        <div class="row">
+            <div class="col-xxl-3 col-lg-4">
+                <div class="dashboard-left-sidebar">
+                    <div class="close-button d-flex d-lg-none">
+                        <button class="close-sidebar">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="profile-box">
+                        <div class="cover-image">
+                            <img src="../assets/images/inner-page/cover-img.jpg" class="img-fluid blur-up lazyload"
+                                 alt="">
+                        </div>
+
+                        <div class="profile-contain">
+                            <div class="profile-image">
+                                <div class="position-relative">
+                                    <img src="../assets/images/vendor-page/logo.png"
+                                         class="blur-up lazyload update_img" alt="">
+                                </div>
+                            </div>
+
+                            <div class="profile-name">
+                                <h3>Joshua D. Bass</h3>
+                                <h6 class="text-content">joshuadbass@rhyta.com</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-pills user-nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a href="#pills-tabContent" class="nav-link active" id="pills-dashboard-tab"
+                               data-bs-toggle="pill" data-bs-target="#pills-dashboard" role="tab"><i
+                                    data-feather="home"></i>
+                                Tổng quan</a>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-product-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-product" type="button" role="tab"><i
+                                    data-feather="shopping-bag"></i>Sản Phẩm
+                            </button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-order-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-order" type="button" role="tab"><i
+                                    data-feather="shopping-bag"></i>Đơn hàng
+                            </button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"><i data-feather="user"></i>
+                                Hồ Sơ
+                            </button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-out-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-out" type="button" role="tab"><i data-feather="log-out"></i>
+                                Đăng xuất
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-xxl-9 col-lg-8">
+                <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">Show
+                    Menu
+                </button>
+                <div class="dashboard-right-sidebar">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel">
+                            <div class="dashboard-home">
+                                <div class="title">
+                                    <h2>My Dashboard</h2>
+                                    <span class="title-leaf">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                </div>
+
+                                <div class="dashboard-user-name">
+                                    <h6 class="text-content">Hello, <b class="text-title">Vicki E. Pope</b></h6>
+                                    <p class="text-content">From your My Account Dashboard you have the ability to
+                                        view a snapshot of your recent account activity and update your account
+                                        information. Select a link below to view or edit information.</p>
+                                </div>
+
+                                <div class="total-box">
+                                    <div class="row g-sm-4 g-3">
+                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="total-contain">
+                                                <img src="../assets/images/svg/order.svg"
+                                                     class="img-1 blur-up lazyload" alt="">
+                                                <img src="../assets/images/svg/order.svg" class="blur-up lazyload"
+                                                     alt="">
+                                                <div class="total-detail">
+                                                    <h5>Total Products</h5>
+                                                    <h3>25</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="total-contain">
+                                                <img src="../assets/images/svg/pending.svg"
+                                                     class="img-1 blur-up lazyload" alt="">
+                                                <img src="../assets/images/svg/pending.svg" class="blur-up lazyload"
+                                                     alt="">
+                                                <div class="total-detail">
+                                                    <h5>Total Sales</h5>
+                                                    <h3>12550</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="total-contain">
+                                                <img src="../assets/images/svg/wishlist.svg"
+                                                     class="img-1 blur-up lazyload" alt="">
+                                                <img src="../assets/images/svg/wishlist.svg"
+                                                     class="blur-up lazyload" alt="">
+                                                <div class="total-detail">
+                                                    <h5>Order Pending</h5>
+                                                    <h3>36</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4">
+                                    <div class="col-xxl-6">
+                                        <div class="dashboard-bg-box">
+                                            <div id="chart"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-6">
+                                        <div class="dashboard-bg-box">
+                                            <div id="sale"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-6">
+                                        <div class="table-responsive dashboard-bg-box">
+                                            <div class="dashboard-title mb-4">
+                                                <h3>Trending Products</h3>
+                                            </div>
+
+                                            <table class="table product-table">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Images</th>
+                                                    <th scope="col">Product Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Sales</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <img src="../assets/images/vegetable/product/1.png"
+                                                             class="img-fluid" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <h6>Fantasy Crunchy Choco Chip Cookies</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>$25.69</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>152</h6>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <img src="../assets/images/vegetable/product/2.png"
+                                                             class="img-fluid" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <h6>Peanut Butter Bite Premium Butter Cookies 600 g</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>$35.36</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>34</h6>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <img src="../assets/images/vegetable/product/3.png"
+                                                             class="img-fluid" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <h6>Yumitos Chilli Sprinkled Potato Chips 100 g</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>$78.55</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>78</h6>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <img src="../assets/images/vegetable/product/4.png"
+                                                             class="img-fluid" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <h6>healthy Long Life Toned Milk 1 L</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>$32.98</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6>135</h6>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-6">
+                                        <div class="order-tab dashboard-bg-box">
+                                            <div class="dashboard-title mb-4">
+                                                <h3>Recent Order</h3>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table order-table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">Order ID</th>
+                                                        <th scope="col">Product Name</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="product-image">#254834</td>
+                                                        <td>
+                                                            <h6>Choco Chip Cookies</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="success">Shipped</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#355678</td>
+                                                        <td>
+                                                            <h6>Premium Butter Cookies</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="danger">Pending</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#647536</td>
+                                                        <td>
+                                                            <h6>Sprinkled Potato Chips</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="success">Shipped</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#125689</td>
+                                                        <td>
+                                                            <h6>Milk 1 L</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="danger">Pending</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#215487</td>
+                                                        <td>
+                                                            <h6>Raw Mutton Leg</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="danger">Pending</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#365474</td>
+                                                        <td>
+                                                            <h6>Instant Coffee</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="success">Shipped</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="product-image">#368415</td>
+                                                        <td>
+                                                            <h6>Jowar Stick and Jowar Chips</h6>
+                                                        </td>
+                                                        <td>
+                                                            <label class="danger">Pending</label>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-product" role="tabpanel">
+                            <div class="product-tab">
+                                <div class="title d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <h2 class="mb-0">Tất Cả Sản Phẩm</h2>
+                                            <span class="title-leaf ms-2">
+            <svg class="icon-width bg-gray">
+                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+            </svg>
+        </span></div>
+                                    </div>
+
+                                    <!-- Nút Thêm sản phẩm -->
+                                    <button class="btn btn-add-product" data-bs-toggle="modal"
+                                            data-bs-target="#addProductModal">
+                                        Thêm sản phẩm
+                                    </button>
+                                </div>
+
+
+                                <div class="table-responsive dashboard-bg-box p-3">
+                                    <table id="productTable"
+                                           class="table table-striped table-bordered align-middle w-100">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Hình ảnh</th>
+                                            <th scope="col">Tên sản phẩm</th>
+                                            <th scope="col">Danh mục</th>
+                                            <th scope="col">Giá (VNĐ/kg)</th>
+                                            <th scope="col">Khối lượng tồn</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Thao tác</th>
+                                        </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Product-->
+                        <!-- jQuery + DataTables -->
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <link rel="stylesheet"
+                              href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"/>
+                        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                        <!-- Modal thêm sản phẩm -->
+                        <div class="modal fade" id="addProductModal" tabindex="-1"
+                             aria-labelledby="addProductModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addProductModalLabel">Thêm sản phẩm mới</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Đóng"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="addProductForm" enctype="multipart/form-data">
+                                            <!-- 1. Select danh mục -->
+                                            <div class="mb-3">
+                                                <label for="category" class="form-label">Danh mục</label>
+                                                <select class="form-select" id="category" required>
+                                                    <option value="">Chọn danh mục</option>
+                                                    <option value="Thịt bò">Thịt bò</option>
+                                                    <option value="Thịt heo">Thịt heo</option>
+                                                    <option value="Thịt gà">Thịt gà</option>
+                                                    <option value="Thịt cừu">Thịt cừu</option>
+                                                    <option value="Thịt vịt">Thịt vịt</option>
+                                                    <option value="Thịt dê">Thịt dê</option>
+                                                    <option value="Chế biến sẵn">Chế biến sẵn</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- 2. Tên sản phẩm -->
+                                            <div class="mb-3">
+                                                <label for="productName" class="form-label">Tên sản phẩm</label>
+                                                <input type="text" class="form-control" id="productName" required>
+                                            </div>
+
+                                            <!-- 3. Giá (VNĐ/kg, >0 và chia hết cho 1000) -->
+                                            <div class="mb-3">
+                                                <label for="price" class="form-label">Giá (VNĐ/kg)</label>
+                                                <input type="number" class="form-control" id="price" min="1000"
+                                                       step="1000" required>
+                                            </div>
+
+                                            <!-- 4. Khối lượng tồn -->
+                                            <div class="mb-3">
+                                                <label for="stockWeight" class="form-label">Khối lượng tồn (kg)</label>
+                                                <input type="number" class="form-control" id="stockWeight" min="0"
+                                                       step="0.1" value="0">
+                                            </div>
+
+                                            <!-- Upload ảnh với xem trước -->
+                                            <div class="mb-3">
+                                                <label for="imageFile" class="form-label">Hình ảnh (tùy chọn)</label>
+                                                <input type="file" class="form-control" id="imageFile" accept="image/*">
+                                                <img id="imagePreview" src="" alt="Xem trước" class="img-thumbnail mt-2"
+                                                     style="width:100px; height:100px; object-fit:cover; display:none;">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal sửa sản phẩm -->
+                        <div class="modal fade" id="editProductModal" tabindex="-1"
+                             aria-labelledby="editProductModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editProductModalLabel">Chỉnh sửa sản phẩm</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Đóng"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="editProductForm" enctype="multipart/form-data">
+                                            <input type="hidden" id="editProductID">
+
+                                            <!-- Danh mục (read-only) -->
+                                            <div class="mb-3">
+                                                <label for="editCategory" class="form-label">Danh mục</label>
+                                                <input type="text" class="form-control" id="editCategory" readonly>
+                                            </div>
+
+                                            <!-- Tên sản phẩm -->
+                                            <div class="mb-3">
+                                                <label for="editProductName" class="form-label">Tên sản phẩm</label>
+                                                <input type="text" class="form-control" id="editProductName" required>
+                                            </div>
+
+                                            <!-- Giá -->
+                                            <div class="mb-3">
+                                                <label for="editPrice" class="form-label">Giá (VNĐ/kg)</label>
+                                                <input type="number" class="form-control" id="editPrice" min="1000" step="1000" required>
+                                            </div>
+
+                                            <!-- Khối lượng tồn với nút + / - -->
+                                            <div class="mb-3 d-flex align-items-center">
+                                                <label class="form-label me-2">Khối lượng tồn (kg)</label>
+                                                <button type="button" class="btn btn-sm btn-outline-success me-1" id="decreaseStock">-</button>
+                                                <input type="number" class="form-control w-25 me-1" id="editStockWeight" min="0" step="0.1">
+                                                <button type="button" class="btn btn-sm btn-outline-success" id="increaseStock">+</button>
+                                            </div>
+
+                                            <!-- Ảnh cũ + thay đổi ảnh -->
+                                            <div class="mb-3">
+                                                <label class="form-label">Ảnh hiện tại</label><br>
+                                                <img id="editImagePreview" src="" alt="Ảnh sản phẩm"
+                                                     class="img-thumbnail mb-2"
+                                                     style="width:100px; height:100px; object-fit:cover;"><br>
+                                                <label class="form-label mt-2">Thay ảnh mới</label>
+                                                <input type="file" class="form-control" id="editImageFile" accept="image/*">
+                                                <img id="editImagePreviewNew" src="" alt="Xem trước ảnh mới"
+                                                     class="img-thumbnail mt-2" style="width:100px; height:100px; object-fit:cover; display:none;">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success">Cập nhật sản phẩm</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Bảng sản phẩm-->
+                        <script>
+                            $(document).ready(function () {
+                                $('#productTable').DataTable({
+                                    ajax: {
+                                        url: '/api/products',
+                                        dataSrc: ''
+                                    },
+                                    columns: [
+                                        {data: 'productID'},
+
+                                        {
+                                            data: 'imageURL',
+                                            render: function (data) {
+                                                return `<img src="${data}" class="img-thumbnail" style="width:60px; height:60px; object-fit:cover"/>`;
+                                            }
+                                        },
+                                        {data: 'productName'},
+                                        {data: 'category'},
+                                        {
+                                            data: 'price',
+                                            render: function (data) {
+                                                return `<span class="fw-bold text-primary">${Number(data).toLocaleString()} ₫</span>`;
+                                            }
+                                        },
+                                        {
+                                            data: 'stockWeight',
+                                            render: function (data) {
+                                                return data + " kg";   // thêm đơn vị kg
+                                            }
+                                        },
+                                        {
+                                            data: 'status',
+                                            render: function (data) {
+                                                switch (data) {
+                                                    case 1:
+                                                        return `<span class="text-success">Còn hàng</span>`;
+                                                    case 2:
+                                                        return `<span class="text-warning">Hết hàng</span>`;
+                                                    case 3:
+                                                        return `<span class="text-danger">Ngừng kinh doanh</span>`;
+                                                    default:
+                                                        return "Không rõ";
+                                                }
+                                            }
+                                        },
+                                        {
+                                            data: null,
+                                            orderable: false,
+                                            searchable: false,
+                                            render: function (data, type, row) {
+                                                let actionButton = '';
+                                                if (row.status === 3) {
+                                                    // nút khôi phục
+                                                    actionButton = `<button class="btn btn-sm btn-outline-success" onclick="restoreProduct(${row.productID}, this)">
+                                <i data-feather="rotate-ccw"></i>
+                            </button>`;
+                                                } else {
+                                                    // nút xóa/ngừng kinh doanh
+                                                    actionButton = `<button class="btn btn-sm btn-outline-danger" onclick="disableProduct(${row.productID}, this)">
+                                <i data-feather="trash-2"></i>
+                            </button>`;
+                                                }
+
+                                                // nút edit (disabled nếu status=3)
+                                                const editDisabled = row.status === 3 ? 'disabled' : '';
+                                                const editButton = `<button class="btn btn-sm btn-outline-primary" ${editDisabled} onclick='openEditModal(${JSON.stringify(row)})'>
+                                <i data-feather="edit"></i>
+                            </button>`;
+
+                                                return `<div class="d-flex justify-content-center gap-2">${editButton} ${actionButton}</div>`;
+                                            }
+                                        }
+
+                                    ],
+                                    responsive: true,
+                                    autoWidth: false,
+                                    lengthMenu: [1, 3, 5, 10],
+                                    pageLength: 5,   // 👈 mặc định hiển thị 5 sản phẩm
+                                    pagingType: "full_numbers", // 👈 phân trang với ... khi nhiều
+                                    language: {
+                                        search: "Tìm kiếm:",
+                                        lengthMenu: "Hiển thị _MENU_ sản phẩm",
+                                        info: "Hiển thị _START_ đến _END_ trong _TOTAL_ sản phẩm",
+                                        paginate: {
+                                            first: "Đầu",
+                                            last: "Cuối",
+                                            next: "Sau",
+                                            previous: "Trước"
+                                        }
+                                    },
+                                    drawCallback: function () {
+                                        feather.replace();
+                                    }
+                                });
+                            });
+
+                            function disableProduct(id, btn) {
+                                Swal.fire({
+                                    title: 'Bạn có chắc chắn?',
+                                    text: "Sản phẩm sẽ ngừng kinh doanh!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Có, ngừng kinh doanh',
+                                    cancelButtonText: 'Hủy'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        fetch(`/api/products/${id}/disable`, {method: 'PUT'})
+                                            .then(res => {
+                                                if (!res.ok) throw new Error('Không thể cập nhật sản phẩm!');
+                                                // disable nút ngay lập tức
+                                                btn.disabled = true;
+                                                btn.classList.remove('btn-outline-danger');
+                                                btn.classList.add('btn-secondary');
+                                                feather.replace(); // cập nhật icon
+
+                                                // Hiển thị thông báo success bằng SweetAlert
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Đã ngừng kinh doanh!',
+                                                    text: 'Sản phẩm đã được cập nhật trạng thái.',
+                                                    timer: 1500,
+                                                    showConfirmButton: false
+                                                }).then(() => {
+                                                    // reload page hoặc table sau khi thông báo tắt
+                                                    $('#productTable').DataTable().ajax.reload(null, false);
+                                                    // Nếu dùng DataTable: table.ajax.reload(null, false);
+                                                });
+                                            })
+                                            .catch(err => {
+                                                Swal.fire('Lỗi', err.message, 'error');
+                                            });
+                                    }
+                                });
+                            }
+
+                            function restoreProduct(id, btn) {
+                                Swal.fire({
+                                    title: 'Khôi phục sản phẩm?',
+                                    text: "Sản phẩm sẽ trở lại trạng thái còn hàng hoặc hết hàng dựa trên khối lượng tồn!",
+                                    icon: 'question',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Khôi phục',
+                                    cancelButtonText: 'Hủy'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        fetch(`/api/products/${id}/restore`, { method: 'PUT' })
+                                            .then(res => {
+                                                if (!res.ok) throw new Error('Không thể khôi phục sản phẩm!');
+                                                return res.json();
+                                            })
+                                            .then(data => {
+                                                Swal.fire('Đã khôi phục!', 'Sản phẩm đã được khôi phục.', 'success');
+                                                // reload DataTable
+                                                $('#productTable').DataTable().ajax.reload(null, false);
+                                            })
+                                            .catch(err => Swal.fire('Lỗi', err.message, 'error'));
+                                    }
+                                });
+                            }
+
+                        </script>
+
+                        <!--CRUD-->
+                        <script>
+                            document.getElementById('addProductForm').addEventListener('submit', async function (e) {
+                                e.preventDefault();
+
+                                const productName = document.getElementById('productName').value.trim();
+                                const category = document.getElementById('category').value;
+                                const price = Number(document.getElementById('price').value);
+                                const stockWeight = Number(document.getElementById('stockWeight').value || 0);
+                                const imageFile = document.getElementById('imageFile').files[0];
+
+                                // 1. Validation tên sản phẩm
+                                const table = $('#productTable').DataTable();
+                                const existingProducts = table.data().toArray().map(p => p.productName.toLowerCase());
+                                if (existingProducts.includes(productName.toLowerCase())) {
+                                    return Swal.fire('Lỗi', 'Tên sản phẩm đã tồn tại!', 'error');
+                                }
+
+                                // 2. Validation giá
+                                if (price <= 0 || price % 1000 !== 0) {
+                                    return Swal.fire('Lỗi', 'Giá phải lớn hơn 0 và chia hết cho 1000!', 'error');
+                                }
+
+                                // 5. Tính status ẩn
+                                const status = stockWeight === 0 ? 2 : 1; // 1 = còn hàng, 2 = hết hàng
+
+                                // 3. Tạo formData để upload ảnh nếu có
+                                const formData = new FormData();
+                                formData.append('productName', productName);
+                                formData.append('category', category);
+                                formData.append('price', price);
+                                formData.append('stockWeight', stockWeight);
+                                formData.append('status', status);
+                                if (imageFile) formData.append('imageFile', imageFile);
+
+                                try {
+                                    const res = await fetch('/api/products', {
+                                        method: 'POST',
+                                        body: formData
+                                    });
+
+                                    if (!res.ok) throw new Error('Không thể thêm sản phẩm!');
+
+                                    const data = await res.json();
+
+                                    Swal.fire('Thành công', 'Sản phẩm đã được thêm', 'success');
+
+                                    // Đóng modal
+                                    const modalEl = document.getElementById('addProductModal');
+                                    const modal = bootstrap.Modal.getInstance(modalEl);
+                                    modal.hide();
+
+                                    // Reload DataTable
+                                    $('#productTable').DataTable().ajax.reload(null, false);
+
+                                } catch (err) {
+                                    Swal.fire('Lỗi', err.message, 'error');
+                                }
+                            });
+                            // Xem trước ảnh khi chọn file
+                            document.getElementById('imageFile').addEventListener('change', function() {
+                                const preview = document.getElementById('imagePreview');
+                                const file = this.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        preview.src = e.target.result;
+                                        preview.style.display = 'block';
+                                    }
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    preview.src = '';
+                                    preview.style.display = 'none';
+                                }
+                            });
+
+                            document.getElementById('editImageFile').addEventListener('change', function() {
+                                const file = this.files[0];
+                                const preview = document.getElementById('editImagePreviewNew');
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        preview.src = e.target.result;
+                                        preview.style.display = 'block';
+                                    }
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    preview.src = '';
+                                    preview.style.display = 'none';
+                                }
+                            });
+
+                            // Reset form khi modal đóng
+                            const addProductModalEl = document.getElementById('addProductModal');
+                            addProductModalEl.addEventListener('hidden.bs.modal', function () {
+                                const form = document.getElementById('addProductForm');
+                                form.reset();
+
+                                // Ẩn preview ảnh
+                                const preview = document.getElementById('imagePreview');
+                                preview.src = '';
+                                preview.style.display = 'none';
+                            });
+
+                            function openEditModal(product) {
+                                document.getElementById('editProductID').value = product.productID;
+                                document.getElementById('editCategory').value = product.category;
+                                document.getElementById('editProductName').value = product.productName;
+                                document.getElementById('editPrice').value = product.price;
+                                document.getElementById('editStockWeight').value = product.stockWeight;
+                                document.getElementById('editImagePreview').src = product.imageURL || '/images/default.png';
+
+                                const modalEl = document.getElementById('editProductModal');
+                                const modal = new bootstrap.Modal(modalEl);
+                                modal.show();
+                            }
+
+                            document.getElementById('editProductForm').addEventListener('submit', async function(e) {
+                                e.preventDefault();
+
+                                const productID = document.getElementById('editProductID').value;
+                                const productName = document.getElementById('editProductName').value.trim();
+                                const category = document.getElementById('editCategory').value; // read-only
+                                const price = Number(document.getElementById('editPrice').value);
+                                const stockWeight = Number(document.getElementById('editStockWeight').value || 0);
+                                const imageFile = document.getElementById('editImageFile').files[0];
+
+                                // 1. Validation tên sản phẩm
+                                const table = $('#productTable').DataTable();
+                                const existingProducts = table.data().toArray()
+                                    .filter(p => p.productID != productID) // bỏ qua chính sản phẩm đang edit
+                                    .map(p => p.productName.toLowerCase());
+
+                                if (existingProducts.includes(productName.toLowerCase())) {
+                                    return Swal.fire('Lỗi', 'Tên sản phẩm đã tồn tại!', 'error');
+                                }
+
+                                // 2. Validation giá
+                                if (price <= 0 || price % 1000 !== 0) {
+                                    return Swal.fire('Lỗi', 'Giá phải lớn hơn 0 và chia hết cho 1000!', 'error');
+                                }
+
+                                // 3. Tính status
+                                const status = stockWeight === 0 ? 2 : 1; // 1 = còn hàng, 2 = hết hàng
+
+                                // 4. Tạo FormData
+                                const formData = new FormData();
+                                formData.append('productName', productName);
+                                formData.append('price', price);
+                                formData.append('stockWeight', stockWeight);
+                                if (imageFile) formData.append('imageFile', imageFile);
+
+                                try {
+                                    const res = await fetch(`/api/products/${productID}`, {
+                                        method: 'PUT',
+                                        body: formData
+                                    });
+
+                                    if (!res.ok) throw new Error('Không thể cập nhật sản phẩm!');
+
+                                    const data = await res.json();
+
+                                    Swal.fire('Thành công', 'Sản phẩm đã được cập nhật', 'success');
+
+                                    // Đóng modal
+                                    const modalEl = document.getElementById('editProductModal');
+                                    const modal = bootstrap.Modal.getInstance(modalEl);
+                                    modal.hide();
+
+                                    // Reload DataTable
+                                    $('#productTable').DataTable().ajax.reload(null, false);
+
+                                } catch (err) {
+                                    Swal.fire('Lỗi', err.message, 'error');
+                                }
+                            });
+
+                            // --- Nút tăng/giảm stock ---
+                            document.getElementById('increaseStock').addEventListener('click', () => {
+                                const input = document.getElementById('editStockWeight');
+                                input.value = (Number(input.value) || 0) + 1;
+                            });
+
+                            document.getElementById('decreaseStock').addEventListener('click', () => {
+                                const input = document.getElementById('editStockWeight');
+                                input.value = Math.max(0, (Number(input.value) || 0) - 1);
+                            });
+
+                        </script>
+
+                        <!--CSS-->
+                        <style>
+                            /* Nút + / - khối lượng tồn */
+                            #editProductModal .btn-outline-success {
+                                background-color: #e6f4ea;
+                                border-radius: 50%;
+                                width: 35px;
+                                height: 35px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 0;
+                                font-weight: bold;
+                                transition: all 0.2s;
+                            }
+
+                            #editProductModal .btn-outline-success:hover {
+                                background-color: #c7efd3;
+                            }
+
+                            /* Nút submit dưới góc phải */
+                            #editProductModal button.btn-success {
+                                position: absolute;
+                                right: 1.5rem;
+                                bottom: 1rem;
+                                border-radius: 0.4rem;
+                                padding: 0.5rem 1.2rem;
+                                font-weight: 500;
+                                background-color: #28a745;
+                                color: white;
+                                border: 1px solid #28a745;
+                            }
+                        </style>
+
+                        <style>
+                            /* Modal header */
+                            #editProductModal .modal-header {
+                                background-color: #f8f9fa;
+                                border-bottom: 1px solid #dee2e6;
+                                padding: 1rem 1.5rem;
+                            }
+
+                            #editProductModal .modal-title {
+                                font-weight: 600;
+                                font-size: 1.25rem;
+                                color: #343a40;
+                            }
+
+                            /* Modal body */
+                            #editProductModal .modal-body {
+                                padding: 1.5rem;
+                                position: relative;
+                                padding-bottom: 80px; /* tạo khoảng trống cho nút submit */
+                            }
+
+                            /* Form labels */
+                            #editProductModal .form-label {
+                                font-weight: 500;
+                                color: #495057;
+                            }
+
+                            /* Inputs */
+                            #editProductModal input.form-control,
+                            #editProductModal select.form-select {
+                                border-radius: 0.4rem;
+                                border: 1px solid #ced4da;
+                                padding: 0.5rem 0.75rem;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            }
+
+                            #editProductModal input.form-control:focus,
+                            #editProductModal select.form-select:focus {
+                                border-color: #0d6efd;
+                                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+                            }
+
+                            /* Image preview */
+                            #editImagePreview {
+                                border: 2px solid #dee2e6;
+                                border-radius: 0.5rem;
+                                max-width: 120px;
+                                max-height: 120px;
+                                object-fit: cover;
+                                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                                display: block;
+                                margin-top: 0.5rem;
+                            }
+
+                            /* File input custom spacing */
+                            #editProductModal input[type="file"] {
+                                padding: 0.3rem;
+                            }
+
+                            /* Adjust spacing between form groups */
+                            #editProductModal .mb-3 {
+                                margin-bottom: 1rem;
+                            }
+
+                            /* Nút submit cố định dưới bên phải */
+                            #editProductModal button.btn-primary {
+                                position: absolute;
+                                right: 1.5rem;
+                                bottom: 1rem;
+                                border-radius: 0.4rem;
+                                padding: 0.5rem 1.2rem;
+                                font-weight: 500;
+                                background-color: #28a745; /* xanh lá cố định */
+                                color: white;
+                                border: 1px solid #28a745;
+                                transition: all 0.2s;
+                            }
+
+                            #editProductModal button.btn-primary:hover,
+                            #editProductModal button.btn-primary:focus {
+                                background-color: #28a745 !important;
+                                border-color: #28a745 !important;
+                                color: white;
+                                box-shadow: none;
+                            }
+                        </style>
+
+                        <style>
+                            /* Modal header */
+                            #addProductModal .modal-header {
+                                background-color: #f8f9fa;
+                                border-bottom: 1px solid #dee2e6;
+                                padding: 1rem 1.5rem;
+                            }
+
+                            #addProductModal .modal-title {
+                                font-weight: 600;
+                                font-size: 1.25rem;
+                                color: #343a40;
+                            }
+
+                            /* Modal body */
+                            #addProductModal .modal-body {
+                                padding: 1.5rem;
+                                position: relative;
+                                padding-bottom: 80px; /* tạo khoảng trống cho nút submit */
+                            }
+
+                            /* Form labels */
+                            #addProductModal .form-label {
+                                font-weight: 500;
+                                color: #495057;
+                            }
+
+                            /* Inputs */
+                            #addProductModal input.form-control,
+                            #addProductModal select.form-select {
+                                border-radius: 0.4rem;
+                                border: 1px solid #ced4da;
+                                padding: 0.5rem 0.75rem;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            }
+
+                            #addProductModal input.form-control:focus,
+                            #addProductModal select.form-select:focus {
+                                border-color: #0d6efd;
+                                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+                            }
+
+                            /* Image preview */
+                            #imagePreview {
+                                border: 2px solid #dee2e6;
+                                border-radius: 0.5rem;
+                                max-width: 120px;
+                                max-height: 120px;
+                                object-fit: cover;
+                                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                                display: block;
+                                margin-top: 0.5rem;
+                            }
+
+                            /* File input custom spacing */
+                            #addProductModal input[type="file"] {
+                                padding: 0.3rem;
+                            }
+
+                            /* Adjust spacing between form groups */
+                            #addProductModal .mb-3 {
+                                margin-bottom: 1rem;
+                            }
+
+                            /* Nút submit cố định dưới bên phải */
+                            #addProductModal button.btn-success {
+                                position: absolute;
+                                right: 1.5rem;
+                                bottom: 1rem;
+                                border-radius: 0.4rem;
+                                padding: 0.5rem 1.2rem;
+                                font-weight: 500;
+                                background-color: #28a745; /* xanh lá */
+                                color: white;
+                                border: 1px solid #28a745;
+                                transition: all 0.2s;
+                            }
+
+                            #addProductModal button.btn-success:hover,
+                            #addProductModal button.btn-success:focus {
+                                background-color: #28a745 !important;
+                                border-color: #28a745 !important;
+                                color: white;
+                                box-shadow: none;
+                            }
+                        </style>
+
+                        <style>
+                            .btn-add-product {
+                                background-color: #28a745; /* xanh lá */
+                                color: white;
+                                border: none;
+                            }
+
+                            .btn-add-product:hover {
+                                background-color: #218838; /* xanh lá đậm khi hover */
+                                color: white;
+                            }
+
+
+                            /* Khoảng cách giữa DataTable controls và bảng */
+                            .dataTables_wrapper .dataTables_length,
+                            .dataTables_wrapper .dataTables_filter,
+                            .dataTables_wrapper .dataTables_info,
+                            .dataTables_wrapper .dataTables_paginate {
+                                margin: 15px 0;
+                            }
+
+                            /* Căn giữa nội dung tbody */
+                            #productTable tbody td {
+                                text-align: center;
+                                vertical-align: middle;
+                            }
+
+                            /* Khoảng cách tổng thể */
+                            .dataTables_wrapper {
+                                margin: 20px;
+                            }
+
+                            /* Pagination đẹp hơn */
+                            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                                padding: 6px 12px;
+                                margin: 2px;
+                                border-radius: 6px;
+                                border: 1px solid #dee2e6;
+                            }
+
+                            /* Hover nút phân trang */
+                            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                                background: #f1f1f1;
+                                color: #333 !important;
+                            }
+
+                            /* Nút phân trang hiện tại */
+                            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                                background: #0d6efd;
+                                color: white !important;
+                                border: 1px solid #0d6efd;
+                            }
+
+                            /* Thêm margin cho DataTable */
+                            .dataTables_wrapper {
+                                margin: 20px;
+                            }
+
+                            /* Căn giữa text trong tbody */
+                            #productTable tbody td {
+                                text-align: center;
+                                vertical-align: middle;
+                            }
+
+                            /* Bảng full width */
+                            #productTable {
+                                width: 100% !important;
+                            }
+
+                            /* Căn giữa tiêu đề */
+                            #productTable thead th {
+                                text-align: center;
+                                vertical-align: middle;
+                                padding: 12px;
+                            }
+
+                            /* Giãn cách ô dữ liệu */
+                            #productTable tbody td {
+                                padding: 14px 12px;
+                                vertical-align: middle;
+                            }
+
+                            /* Hover đẹp hơn */
+                            #productTable tbody tr:hover {
+                                background-color: #f9f9f9;
+                            }
+
+                            /* Giãn cột ảnh */
+                            #productTable td:nth-child(2) {
+                                text-align: center;
+                            }
+
+                            /* Action buttons căn giữa */
+                            #productTable td:last-child {
+                                text-align: center;
+                            }
+
+                            /* Bảng bo tròn nhẹ */
+                            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                                padding: 4px 8px;
+                                margin: 2px;
+                                border-radius: 6px;
+                            }
+                        </style>
+                        <!--Product End-->
+
+
+                        <div class="tab-pane fade" id="pills-order" role="tabpanel">
+                            <div class="dashboard-order">
+                                <div class="title">
+                                    <h2>All Order</h2>
+                                    <span class="title-leaf title-leaf-gray">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                </div>
+
+                                <div class="order-tab dashboard-bg-box">
+                                    <div class="table-responsive">
+                                        <table class="table order-table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="product-image">#254834</td>
+                                                <td>
+                                                    <h6>Fantasy Crunchy Choco Chip Cookies</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="success">Shipped</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#355678</td>
+                                                <td>
+                                                    <h6>Peanut Butter Bite Premium Butter Cookies 600 g</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="danger">Pending</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#647536</td>
+                                                <td>
+                                                    <h6>Yumitos Chilli Sprinkled Potato Chips 100 g</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="success">Shipped</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#125689</td>
+                                                <td>
+                                                    <h6>healthy Long Life Toned Milk 1 L</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="danger">Pending</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#215487</td>
+                                                <td>
+                                                    <h6>Raw Mutton Leg, Packaging 5 Kg</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="danger">Pending</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#365474</td>
+                                                <td>
+                                                    <h6>Cold Brew Coffee Instant Coffee 50 g</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="success">Shipped</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="product-image">#368415</td>
+                                                <td>
+                                                    <h6>SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h6>
+                                                </td>
+                                                <td>
+                                                    <label class="danger">Pending</label>
+                                                </td>
+                                                <td>
+                                                    <h6>$25.69</h6>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <nav class="custom-pagination">
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                                    <i class="fa-solid fa-angles-left"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active">
+                                                <a class="page-link" href="javascript:void(0)">1</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript:void(0)">2</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript:void(0)">3</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript:void(0)">
+                                                    <i class="fa-solid fa-angles-right"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel">
+                            <div class="dashboard-profile">
+                                <div class="title">
+                                    <h2>My Profile</h2>
+                                    <span class="title-leaf">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                </div>
+
+                                <div class="profile-tab dashboard-bg-box">
+                                    <div class="dashboard-title dashboard-flex">
+                                        <h3>Profile Name</h3>
+                                        <button class="btn btn-sm theme-bg-color text-white" data-bs-toggle="modal"
+                                                data-bs-target="#edit-profile">Edit Profile
+                                        </button>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <h5>Company Name :</h5>
+                                            <h5>Grocery Store</h5>
+                                        </li>
+                                        <li>
+                                            <h5>Email Address :</h5>
+                                            <h5>joshuadbass@rhyta.com</h5>
+                                        </li>
+                                        <li>
+                                            <h5>Country / Region :</h5>
+                                            <h5>107 Veltri Drive</h5>
+                                        </li>
+
+                                        <li>
+                                            <h5>Year Established :</h5>
+                                            <h5>2022</h5>
+                                        </li>
+
+                                        <li>
+                                            <h5>Total Employees :</h5>
+                                            <h5>154 - 360 People</h5>
+                                        </li>
+                                        <li>
+                                            <h5>Category :</h5>
+                                            <h5>Grocery</h5>
+                                        </li>
+
+                                        <li>
+                                            <h5>Street Address :</h5>
+                                            <h5>234 High St</h5>
+                                        </li>
+
+                                        <li>
+                                            <h5>City / State :</h5>
+                                            <h5>107 Veltri Drive</h5>
+                                        </li>
+
+                                        <li>
+                                            <h5>Zip :</h5>
+                                            <h5>B23 6SN</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- User Dashboard Section End -->
+
+<!-- Tap to top and theme setting button start -->
+<div class="theme-option">
+    <div class="setting-box">
+        <button class="btn setting-button">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+
+        <div class="theme-setting-2">
+            <div class="theme-box">
+                <ul>
+                    <li>
+                        <div class="setting-name">
+                            <h4>Color</h4>
+                        </div>
+                        <div class="theme-setting-button color-picker">
+                            <form class="form-control">
+                                <label for="colorPick" class="form-label mb-0">Theme Color</label>
+                                <input type="color" class="form-control form-control-color" id="colorPick"
+                                       value="#0da487" title="Choose your color">
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="setting-name">
+                            <h4>Dark</h4>
+                        </div>
+                        <div class="theme-setting-button">
+                            <button class="btn btn-2 outline" id="darkButton">Dark</button>
+                            <button class="btn btn-2 unline" id="lightButton">Light</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="setting-name">
+                            <h4>RTL</h4>
+                        </div>
+                        <div class="theme-setting-button rtl">
+                            <button class="btn btn-2 rtl-unline">LTR</button>
+                            <button class="btn btn-2 rtl-outline">RTL</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <a id="back-to-top" href="#">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<!-- Tap to top and theme setting button end -->
+
+<!-- Bg overlay Start -->
+<div class="bg-overlay"></div>
+<!-- Bg overlay End -->
+
+
+<!-- latest jquery-->
+<script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+<!-- jquery ui-->
+<script src="../assets/js/jquery-ui.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables CSS + JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+<!-- Bootstrap js-->
+<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+<script src="../assets/js/bootstrap/popper.min.js"></script>
+
+<!-- feather icon js-->
+<script src="../assets/js/feather/feather.min.js"></script>
+<script src="../assets/js/feather/feather-icon.js"></script>
+
+<!-- Lazyload Js -->
+<script src="../assets/js/lazysizes.min.js"></script>
+
+<!-- Slick js-->
+<script src="../assets/js/slick/slick.js"></script>
+<script src="../assets/js/slick/custom_slick.js"></script>
+
+<!-- Apexcharts Js -->
+<script src="../assets/js/apexchart.js"></script>
+<script src="../assets/js/custom-chart.js"></script>
+
+<!-- Nav & tab upside js -->
+<script src="../assets/js/nav-tab.js"></script>
+
+<!-- script js -->
+<script src="../assets/js/script.js"></script>
+
+<!-- theme setting js -->
+<script src="../assets/js/theme-setting.js"></script>
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    // Lấy ID tab được lưu trong localStorage
+    let activeTab = localStorage.getItem("activeTab");
+
+    if (activeTab) {
+        let tabElement = document.querySelector(`button[data-bs-target="${activeTab}"], a[data-bs-target="${activeTab}"]`);
+        if (tabElement) {
+            let tab = new bootstrap.Tab(tabElement);
+            tab.show();
+        }
+    }
+
+    // Lắng nghe sự kiện khi đổi tab
+    let tabLinks = document.querySelectorAll('button[data-bs-toggle="pill"], a[data-bs-toggle="pill"]');
+    tabLinks.forEach(tabLink => {
+        tabLink.addEventListener("shown.bs.tab", function (event) {
+            let target = event.target.getAttribute("data-bs-target");
+            localStorage.setItem("activeTab", target); // Lưu ID tab đang active
+        });
+    });
+});
+</script>
+</body>
+
+</html>
