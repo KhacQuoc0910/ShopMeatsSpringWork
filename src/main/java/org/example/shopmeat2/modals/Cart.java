@@ -23,7 +23,7 @@ public class Cart {
     private Product product;
 
     @Column(name = "quantity")
-    private Integer quantity;
+    private BigDecimal quantity;
 
     @Column(name = "adddate")
     private LocalDateTime addedAt;
@@ -67,11 +67,11 @@ public class Cart {
         this.product = product;
     }
 
-    public Integer getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 
