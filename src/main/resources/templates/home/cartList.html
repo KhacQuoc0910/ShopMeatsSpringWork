@@ -42,9 +42,9 @@
                     <tr th:each="item, iStat : ${carts}">
                         <td th:text="${iStat.index + 1}"></td>
                         <td th:text="${item.product.productName}"></td>
-                        <td th:text="${item.product.price}"></td>
+                        <td th:text="${#numbers.formatDecimal(item.product.price, 0, 'DEFAULT', 2, 'DEFAULT')}"></td>
                         <td th:text="${item.quantity}"></td>
-                        <td th:text="${item.product.price * item.quantity}"></td>
+                        <td th:text="${#numbers.formatDecimal(item.totalPrice, 0, 'DEFAULT', 2, 'DEFAULT')}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -53,11 +53,9 @@
 
         <div th:if="${!#lists.isEmpty(carts)}" class="card-footer bg-white text-end">
             <b>Tổng:</b>
-            <span th:text="${
-        #numbers.formatDecimal(carts.?sum(c -> c.product.price * c.quantity),
-                               0,'DEFAULT',2,'DEFAULT')
-      }">0</span>
+            <span th:text="${#numbers.formatDecimal(grandTotal, 0, 'DEFAULT', 2, 'DEFAULT')}">0</span>
         </div>
+
     </div>
 </div>
 </body>
